@@ -16,7 +16,7 @@ You only add @plogger.plog_wrapper and argument plog.
 add_param() and add_params() can receive any argument (both existed and new parameter)
 
 ```python
-import param_logger as plogger
+import param_logger.param_logger as plogger
 
 plog_config = plogger.ParamLoggerConfig('exp_v1', base_path='./')
 

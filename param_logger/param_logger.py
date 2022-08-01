@@ -2,24 +2,21 @@ import os
 import functools
 import csv
 
-
-class ParamLoggerConfig():
-    def __init__(self, exp_name, base_path='./', file_suffix='_log'):
-        self.exp_name = exp_name
-        self.base_path = base_path
-        self.file_suffix = file_suffix
-        
-    def get_filepath(self):
-        return os.path.join(self.base_path, self.exp_name + self.file_suffix + '.csv')
-    
     
 class ParamLogger():
-    def __init__(self, config, meta_info=None):
-        self.config = config
+    def __init__(self, name, root_path='./', file_suffix='_log', meta_info=None):
+        self.name = name
+        self.root_path = root_path
+        self.file_suffix = file_suffix
         self.all_data = []
         self.keys = []
         self.data = []
         self.meta_info = meta_info # only dict
+
+        print('ParamLogger output >>', self.get_filepath())
+
+    def get_filepath(self):
+        return os.path.join(self.root_path, self.name + self.file_suffix + '.csv')
 
     def add_meta_info(self, meta_info=None):
         self.meta_info = meta_info
@@ -97,7 +94,7 @@ class ParamLogger():
             for i in range(1, self.get_data_length()):
                 _content.append(self.all_data[i] + [None])
             
-        with open(self.config.get_filepath(), 'w') as log_file:
+        with open(self.get_filepath(), 'w') as log_file:
             writer = csv.writer(log_file)
             writer.writerow(_columns)
             writer.writerows(_content)
@@ -112,15 +109,3 @@ class ParamLogger():
             self.all_data[data_idx] = target_data
 
     
-def plog_wrapper(plog_config):
-    def _wrapper(func):
-        @functools.wraps(func)
-        def _wrapper_base(*args, **kwargs):   
-            plog = ParamLogger(plog_config)
-            result = func(*args, **kwargs, plog=plog)
-            print(f'log >> {plog_config.get_filepath()}')
-            return result
-
-        return _wrapper_base
-    
-    return _wrapper

@@ -39,8 +39,8 @@ ParamLogger output >> ./exp_v1_log.csvz
 exp_v1_log.csv is below
 
 ```bash
-	epoch	loss	accuracy	update	lr	    meta_info
-0	0	    NaN	    NaN	        NaN	    NaN	    {'fold': 0, 'x': 4, ...
+	epoch	loss	accuracy	update	lr	 meta_info
+0	0	    NaN	    NaN			NaN	    NaN	    {'fold': 0, 'x': 4, ...
 1	1	    NaN	    NaN	        NaN	    NaN	    NaN
 2	2	    NaN	    NaN	        NaN	    NaN	    NaN
 3	3	    0.20	0.6	        True	NaN	    NaN

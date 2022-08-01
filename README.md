@@ -16,9 +16,9 @@ You only add ParamLogger instance.
 add_param() and add_params() can receive any argument (both existed and new parameter)
 
 ```python
-import param_logger.param_logger as plogger
+from param_logger import param_logger
 
-plog = plogger.ParamLogger('exp_v1', root_path='./')
+plog = param_logger.ParamLogger('exp_v1', root_path='./')
 
 plog.add_meta_info({'fold':0, 'x':4, 'description':'this is test', 'time':'2021-7-31'})
 plog.add_param('epoch', 0)

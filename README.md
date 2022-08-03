@@ -16,7 +16,7 @@ You only add ParamLogger instance.
 add_param() and add_params() can receive any argument (both existed and new parameter)
 
 ```python
-from param_logger import param_logger
+import param_logger
 
 plog = param_logger.ParamLogger('exp_v1', root_path='./')
 

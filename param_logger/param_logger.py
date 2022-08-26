@@ -4,14 +4,14 @@ import csv
 
     
 class ParamLogger():
-    def __init__(self, name, root_path='./', file_suffix='_log', meta_info=None):
+    def __init__(self, name, root_path='./', file_suffix='_log', meta_info={}):
         self.name = name
         self.root_path = root_path
         self.file_suffix = file_suffix
         self.all_data = []
         self.keys = []
         self.data = []
-        self.meta_info = meta_info # only dict
+        self.meta_info = meta_info
 
         print('ParamLogger output >>', self.get_filepath())
 
@@ -19,7 +19,10 @@ class ParamLogger():
         return os.path.join(self.root_path, self.name + self.file_suffix + '.csv')
 
     def add_meta_info(self, meta_info=None):
-        self.meta_info = meta_info
+        self.meta_info.update(meta_info)
+
+    def delete_meta_info(self):
+        self.meta_info = {}
         
     def get_data_length(self):
         return len(self.all_data)
@@ -73,7 +76,10 @@ class ParamLogger():
             
         if update:
             self.update()
-            
+
+    def delete_params(self):
+        self.data = []
+
     
     def update(self):
         self.all_data.append(self.data)
@@ -83,7 +89,7 @@ class ParamLogger():
     
     def write_csv(self):
         
-        if self.meta_info is None:
+        if len(self.meta_info) == 0:
             _columns = self.keys
             _content = self.all_data
             

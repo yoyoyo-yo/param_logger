@@ -38,15 +38,15 @@ ParamLogger output >> ./exp_v1_log.csvz
 
 exp_v1_log.csv is below
 
-```bash
-	epoch	loss	accuracy	update	lr	 meta_info
-0	0	    NaN	    NaN			NaN	    NaN	    {'fold': 0, 'x': 4, ...
-1	1	    NaN	    NaN	        NaN	    NaN	    NaN
-2	2	    NaN	    NaN	        NaN	    NaN	    NaN
-3	3	    0.20	0.6	        True	NaN	    NaN
-4	4	    0.10	0.8	        NaN	    NaN	    NaN
-5	5	    0.01	0.6	        True	0.001	NaN
-```
+|   epoch |   loss |   accuracy |   update |      lr | meta_info                                   |
+|---------|--------|------------|----------|---------|---------------------------------------------|
+|       0 | nan    |      nan   |      nan | nan     | {'fold': 0, 'x': 4, 'a': 'a', 'aaa': 'bbb'} |
+|       1 | nan    |      nan   |      nan | nan     | nan                                         |
+|       2 | nan    |      nan   |      nan | nan     | nan                                         |
+|       3 |   0.2  |        0.6 |        1 | nan     | nan                                         |
+|       4 |   0.1  |        0.8 |      nan | nan     | nan                                         |
+|       5 |   0.01 |        0.6 |        1 |   0.001 | nan                                         |
+|     nan | nan    |      nan   |      nan | nan     | nan                                         |
 
 See >> sample_run.ipynb
 
